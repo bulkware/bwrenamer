@@ -1,0 +1,1083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>bwRenamer</string>
+  </property>
+  <property name="locale">
+   <locale language="English" country="UnitedStates"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QTableWidget" name="tblFileList">
+        <property name="acceptDrops">
+         <bool>true</bool>
+        </property>
+        <property name="editTriggers">
+         <set>QAbstractItemView::NoEditTriggers</set>
+        </property>
+        <property name="alternatingRowColors">
+         <bool>true</bool>
+        </property>
+        <property name="selectionMode">
+         <enum>QAbstractItemView::ExtendedSelection</enum>
+        </property>
+        <property name="selectionBehavior">
+         <enum>QAbstractItemView::SelectRows</enum>
+        </property>
+        <attribute name="horizontalHeaderCascadingSectionResizes">
+         <bool>false</bool>
+        </attribute>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="verticalHeaderVisible">
+         <bool>true</bool>
+        </attribute>
+        <attribute name="verticalHeaderStretchLastSection">
+         <bool>false</bool>
+        </attribute>
+       </widget>
+      </item>
+      <item>
+       <widget class="QTabWidget" name="tabMain">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>220</height>
+         </size>
+        </property>
+        <property name="currentIndex">
+         <number>0</number>
+        </property>
+        <property name="tabsClosable">
+         <bool>false</bool>
+        </property>
+        <property name="movable">
+         <bool>false</bool>
+        </property>
+        <widget class="QWidget" name="tabCounter">
+         <attribute name="title">
+          <string>Counter</string>
+         </attribute>
+         <widget class="QLabel" name="lblCounter">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Counter</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btnCounter">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>160</y>
+            <width>71</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Set</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblCounterSide">
+          <property name="geometry">
+           <rect>
+            <x>90</x>
+            <y>60</y>
+            <width>71</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Side</string>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="sboCounterZeros">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>80</y>
+            <width>71</width>
+            <height>22</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="cboCounterSide">
+          <property name="geometry">
+           <rect>
+            <x>90</x>
+            <y>80</y>
+            <width>71</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <item>
+           <property name="text">
+            <string>Left</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Right</string>
+           </property>
+          </item>
+         </widget>
+         <widget class="QSpinBox" name="sboCounterPos">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>80</y>
+            <width>71</width>
+            <height>22</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="chkCounterReplace">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>120</y>
+            <width>231</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Replace filename</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblCounterZeros">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>60</y>
+            <width>71</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Zeros</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblCounterPos">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>71</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Position</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tabCrop">
+         <attribute name="title">
+          <string>Crop</string>
+         </attribute>
+         <widget class="QLabel" name="lblCrop">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Crop</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btnCrop">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>160</y>
+            <width>71</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Set</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblCropStart">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>71</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Start</string>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="sboCropStart">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>80</y>
+            <width>111</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="value">
+           <number>1</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblCropEnd">
+          <property name="geometry">
+           <rect>
+            <x>130</x>
+            <y>60</y>
+            <width>71</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>End</string>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="sboCropEnd">
+          <property name="geometry">
+           <rect>
+            <x>130</x>
+            <y>80</y>
+            <width>111</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="value">
+           <number>99</number>
+          </property>
+         </widget>
+         <widget class="QCheckBox" name="chkCropInvert">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>120</y>
+            <width>231</width>
+            <height>17</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Invert</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tabExt">
+         <attribute name="title">
+          <string>Extension</string>
+         </attribute>
+         <widget class="QLabel" name="lblExt">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Extension</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="txtExt">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>80</y>
+            <width>231</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblExtNew">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>231</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>New extension:</string>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="btnExt">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>160</y>
+            <width>71</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Set</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tabInsert">
+         <attribute name="title">
+          <string>Insert</string>
+         </attribute>
+         <widget class="QPushButton" name="btnInsert">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>160</y>
+            <width>71</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Set</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="txtInsertText">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>80</y>
+            <width>231</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblInsert">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Insert</string>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="cboInsertSide">
+          <property name="geometry">
+           <rect>
+            <x>130</x>
+            <y>130</y>
+            <width>111</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <item>
+           <property name="text">
+            <string>Left</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Right</string>
+           </property>
+          </item>
+         </widget>
+         <widget class="QLabel" name="lblInsertPos">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>110</y>
+            <width>111</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Position</string>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="sboInsertPos">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>130</y>
+            <width>111</width>
+            <height>22</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblInsertSide">
+          <property name="geometry">
+           <rect>
+            <x>130</x>
+            <y>110</y>
+            <width>111</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Side</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>231</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>String</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tabRegEx">
+         <attribute name="title">
+          <string>RegEx</string>
+         </attribute>
+         <widget class="QPushButton" name="btnRegEx">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>160</y>
+            <width>71</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Set</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="txtRegExReplace">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>130</y>
+            <width>231</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblRegEx">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>RegEx</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblRegExSearch">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>231</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Search</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="txtRegExSearch">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>80</y>
+            <width>231</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblRegExReplace">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>110</y>
+            <width>231</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Replace with</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>400</x>
+            <y>10</y>
+            <width>361</width>
+            <height>171</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>&quot;In computing, a regular expression (abbreviated regex or regexp) is a sequence of characters that forms a search pattern, mainly for use in pattern matching with strings, or string matching, i.e. &quot;find and replace&quot;-like operations.&quot; - &lt;a href=&quot;http://en.wikipedia.org/wiki/Regular_expression&quot;&gt;Wikipedia&lt;/a&gt;&lt;br /&gt;&lt;br /&gt; Examples:&lt;br /&gt;\d = match digits&lt;br /&gt;\w = match all word characters&lt;br /&gt;\s = match all whitespace characters&lt;br /&gt;&lt;br /&gt;For more information, visit &lt;a href=&quot;http://www.regular-expressions.info/&quot;&gt;this site&lt;/a&gt;.</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::AutoText</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="openExternalLinks">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tabReplace">
+         <attribute name="title">
+          <string>Replace</string>
+         </attribute>
+         <widget class="QPushButton" name="btnReplace">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>160</y>
+            <width>71</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Set</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblReplaceSearch">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>231</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Search</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblReplace">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Replace</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="txtReplaceWith">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>130</y>
+            <width>231</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="txtReplaceSearch">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>80</y>
+            <width>231</width>
+            <height>20</height>
+           </rect>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblReplaceWith">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>110</y>
+            <width>231</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Replace with</string>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tabTextCase">
+         <attribute name="title">
+          <string>Text case</string>
+         </attribute>
+         <widget class="QPushButton" name="btnTextCase">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>160</y>
+            <width>71</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Set</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblTextCase">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Text case</string>
+          </property>
+         </widget>
+         <widget class="QGroupBox" name="grpTextCaseMode">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>50</y>
+            <width>231</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="title">
+           <string>Mode</string>
+          </property>
+          <widget class="QRadioButton" name="optTextCase1">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>20</y>
+             <width>231</width>
+             <height>17</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Capitalize text</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QRadioButton" name="optTextCase2">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>40</y>
+             <width>231</width>
+             <height>17</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Title Case</string>
+           </property>
+          </widget>
+          <widget class="QRadioButton" name="optTextCase3">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>60</y>
+             <width>231</width>
+             <height>17</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>lowercase</string>
+           </property>
+          </widget>
+          <widget class="QRadioButton" name="optTextCase4">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>80</y>
+             <width>231</width>
+             <height>17</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>UPPERCASE</string>
+           </property>
+          </widget>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="tabTrim">
+         <attribute name="title">
+          <string>Trim</string>
+         </attribute>
+         <widget class="QPushButton" name="btnTrim">
+          <property name="geometry">
+           <rect>
+            <x>170</x>
+            <y>160</y>
+            <width>71</width>
+            <height>23</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Set</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblTrimLength">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>60</y>
+            <width>111</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Length</string>
+          </property>
+         </widget>
+         <widget class="QSpinBox" name="sboTrimLength">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>80</y>
+            <width>111</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <property name="minimum">
+           <number>1</number>
+          </property>
+          <property name="value">
+           <number>1</number>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblTrimSide">
+          <property name="geometry">
+           <rect>
+            <x>130</x>
+            <y>60</y>
+            <width>111</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Side</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="lblTrim">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>10</y>
+            <width>231</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <pointsize>16</pointsize>
+            <weight>75</weight>
+            <bold>true</bold>
+           </font>
+          </property>
+          <property name="text">
+           <string>Trim</string>
+          </property>
+         </widget>
+         <widget class="QComboBox" name="cboTrimSide">
+          <property name="geometry">
+           <rect>
+            <x>128</x>
+            <y>80</y>
+            <width>111</width>
+            <height>22</height>
+           </rect>
+          </property>
+          <item>
+           <property name="text">
+            <string>Left</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>Right</string>
+           </property>
+          </item>
+         </widget>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionAddFiles"/>
+    <addaction name="actionAddFolder"/>
+    <addaction name="actionRemoveFiles"/>
+    <addaction name="actionRename"/>
+    <addaction name="actionClearList"/>
+    <addaction name="separator"/>
+    <addaction name="actionQuit"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuHelp"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="toolButtonStyle">
+    <enum>Qt::ToolButtonTextUnderIcon</enum>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionAddFiles"/>
+   <addaction name="actionAddFolder"/>
+   <addaction name="actionRemoveFiles"/>
+   <addaction name="actionClearList"/>
+   <addaction name="actionRename"/>
+  </widget>
+  <action name="actionQuit">
+   <property name="text">
+    <string>Quit</string>
+   </property>
+  </action>
+  <action name="actionAddFiles">
+   <property name="text">
+    <string>Add files</string>
+   </property>
+  </action>
+  <action name="actionAddFolder">
+   <property name="text">
+    <string>Add folder</string>
+   </property>
+   <property name="toolTip">
+    <string>Add folder</string>
+   </property>
+  </action>
+  <action name="actionClearList">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Clear list</string>
+   </property>
+   <property name="toolTip">
+    <string>Clear list</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About...</string>
+   </property>
+  </action>
+  <action name="actionExt">
+   <property name="text">
+    <string>Extension</string>
+   </property>
+  </action>
+  <action name="actionReplace">
+   <property name="text">
+    <string>Replace</string>
+   </property>
+  </action>
+  <action name="actionInsert">
+   <property name="text">
+    <string>Insert</string>
+   </property>
+  </action>
+  <action name="actionTrim">
+   <property name="text">
+    <string>Trim</string>
+   </property>
+  </action>
+  <action name="actionRegEx">
+   <property name="text">
+    <string>RegEx</string>
+   </property>
+  </action>
+  <action name="actionCounter">
+   <property name="text">
+    <string>Counter</string>
+   </property>
+  </action>
+  <action name="actionTextCase">
+   <property name="text">
+    <string>Text case</string>
+   </property>
+  </action>
+  <action name="actionCrop">
+   <property name="text">
+    <string>Crop</string>
+   </property>
+  </action>
+  <action name="actionRename">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Rename files</string>
+   </property>
+   <property name="toolTip">
+    <string>Rename files</string>
+   </property>
+  </action>
+  <action name="actionRemoveFiles">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Remove files</string>
+   </property>
+   <property name="toolTip">
+    <string>Remove files</string>
+   </property>
+  </action>
+ </widget>
+ <tabstops>
+  <tabstop>tblFileList</tabstop>
+  <tabstop>tabMain</tabstop>
+  <tabstop>sboCounterPos</tabstop>
+  <tabstop>cboCounterSide</tabstop>
+  <tabstop>sboCounterZeros</tabstop>
+  <tabstop>chkCounterReplace</tabstop>
+  <tabstop>btnCounter</tabstop>
+  <tabstop>sboCropStart</tabstop>
+  <tabstop>sboCropEnd</tabstop>
+  <tabstop>chkCropInvert</tabstop>
+  <tabstop>btnCrop</tabstop>
+  <tabstop>txtExt</tabstop>
+  <tabstop>btnExt</tabstop>
+  <tabstop>txtInsertText</tabstop>
+  <tabstop>sboInsertPos</tabstop>
+  <tabstop>cboInsertSide</tabstop>
+  <tabstop>btnInsert</tabstop>
+  <tabstop>txtRegExSearch</tabstop>
+  <tabstop>txtRegExReplace</tabstop>
+  <tabstop>btnRegEx</tabstop>
+  <tabstop>txtReplaceSearch</tabstop>
+  <tabstop>txtReplaceWith</tabstop>
+  <tabstop>btnReplace</tabstop>
+  <tabstop>optTextCase1</tabstop>
+  <tabstop>optTextCase2</tabstop>
+  <tabstop>optTextCase3</tabstop>
+  <tabstop>optTextCase4</tabstop>
+  <tabstop>btnTextCase</tabstop>
+  <tabstop>sboTrimLength</tabstop>
+  <tabstop>cboTrimSide</tabstop>
+  <tabstop>btnTrim</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>
