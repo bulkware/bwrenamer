@@ -2,8 +2,7 @@
 
 # Form implementation generated from reading ui file 'mainwindow.ui'
 #
-# Created: Sun Feb 23 21:36:48 2014
-#      by: PyQt4 UI code generator 4.10.3
+# Created by: PyQt4 UI code generator 4.12.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -301,7 +300,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addLayout(self.verticalLayout)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 20))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuFile = QtGui.QMenu(self.menubar)
         self.menuFile.setObjectName(_fromUtf8("menuFile"))
@@ -361,6 +360,7 @@ class Ui_MainWindow(object):
         self.toolBar.addAction(self.actionRemoveFiles)
         self.toolBar.addAction(self.actionClearList)
         self.toolBar.addAction(self.actionRename)
+        self.toolBar.addAction(self.actionQuit)
 
         self.retranslateUi(MainWindow)
         self.tabMain.setCurrentIndex(0)
