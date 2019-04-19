@@ -2,7 +2,7 @@
 Name "bwRenamer"
 
 ; The file to write
-OutFile "installers\bwrenamer_1.0.0_installer_win32.exe"
+OutFile "windows-version\bwrenamer_1.1.0_installer_win32.exe"
 
 ; The default installation directory
 InstallDir "$PROGRAMFILES\bwRenamer"
