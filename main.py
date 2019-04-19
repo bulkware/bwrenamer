@@ -286,7 +286,7 @@ class Main(QtGui.QMainWindow):
     # Help > about...
     def aboutMessage(self):
         msg = """<strong>bwRenamer</strong><br />
-        Version 1.0.0<br />
+        Version 1.1.0<br />
         <br />
         This is free software.<br />
         Released under the General Public License.<br />

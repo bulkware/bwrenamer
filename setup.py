@@ -37,7 +37,7 @@ setup(
     author = 'bulkware',
     description = "An application to batch rename files.",
     name = "bwRenamer",
-    version = "1.0.0",
+    version = "1.1.0",
     options = dict(build_exe = buildOptions),
     executables = [exe]
 )
