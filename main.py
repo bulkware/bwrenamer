@@ -514,15 +514,15 @@ class Main(QtGui.QMainWindow):
         # Populate table
         for i, file in enumerate(self.filelist.filelist):
             item = QtGui.QTableWidgetItem(file[2])
-            item.setTextAlignment(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignLeft)
+            item.setTextAlignment(int(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignLeft))
             self.ui.tblFileList.setItem(i, 0, item)
 
             item = QtGui.QTableWidgetItem(file[3])
-            item.setTextAlignment(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignLeft)
+            item.setTextAlignment(int(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignLeft))
             self.ui.tblFileList.setItem(i, 1, item)
 
             item = QtGui.QTableWidgetItem(file[4])
-            item.setTextAlignment(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignLeft)
+            item.setTextAlignment(int(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignLeft))
             self.ui.tblFileList.setItem(i, 2, item)
 
             item = QtGui.QTableWidgetItem()
