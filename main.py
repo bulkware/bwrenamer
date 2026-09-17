@@ -7,8 +7,8 @@
 import os # Miscellaneous operating system interfaces
 import sys # System-specific parameters and functions
 
-# PyQt imports
-from PyQt4 import QtCore, QtGui
+# PyQt6 imports
+from PyQt6 import QtCore, QtGui, QtWidgets
 
 # Application classes
 from filelisthandler import FileListHandler # A class to handle file lists
@@ -17,7 +17,7 @@ from filelisthandler import FileListHandler # A class to handle file lists
 from mainwindow import *
 
 # Create a class for our mainwindow
-class Main(QtGui.QMainWindow):
+class Main(QtWidgets.QMainWindow):
 
     # Initialize mainwindow
     def __init__(self):
@@ -29,7 +29,7 @@ class Main(QtGui.QMainWindow):
         self.filelist = FileListHandler()
 
         # Initialize top level window widget
-        QtGui.QMainWindow.__init__(self)
+        super().__init__()
 
         # This is always the same
         self.ui = Ui_MainWindow()
@@ -137,7 +137,7 @@ class Main(QtGui.QMainWindow):
     def addFiles(self):
 
         # Get file list using a dialog
-        items = QtGui.QFileDialog.getOpenFileNames(self, "Add files",
+        items, _ = QtWidgets.QFileDialog.getOpenFileNames(self, "Add files",
             self.path)
 
         # Check list for items
@@ -152,7 +152,7 @@ class Main(QtGui.QMainWindow):
     def addFolder(self):
 
         # Get folder using a dialog
-        path = QtGui.QFileDialog.getExistingDirectory(self, "Add folder",
+        path = QtWidgets.QFileDialog.getExistingDirectory(self, "Add folder",
             self.path)
 
         # Check path
@@ -222,7 +222,7 @@ class Main(QtGui.QMainWindow):
             msg += "%s doesn't exist\n" % (nonexist)
             msg += "%s duplicates\n" % (duplicates)
             msg += "%s folders\n" % (folders)
-            QtGui.QMessageBox.information(self, "Info", msg)
+            QtWidgets.QMessageBox.information(self, "Info", msg)
 
 
     # Clear list
@@ -238,13 +238,13 @@ class Main(QtGui.QMainWindow):
         # Check if file list is empty
         if self.filelist.count < 1:
             msg = "No files in list."
-            QtGui.QMessageBox.critical(self, "Error", msg)
+            QtWidgets.QMessageBox.critical(self, "Error", msg)
             return
 
         # Check table's selected items
         if not self.ui.tblFileList.selectedIndexes():
             msg = "Please select file."
-            QtGui.QMessageBox.critical(self, "Error", msg)
+            QtWidgets.QMessageBox.critical(self, "Error", msg)
             return
 
         # Get indexes from table
@@ -273,14 +273,14 @@ class Main(QtGui.QMainWindow):
         self.refreshTable()
         if ok:
             message = "Files renamed successfully."
-            QtGui.QMessageBox.information(self, "Info", message)
+            QtWidgets.QMessageBox.information(self, "Info", message)
         else:
-            QtGui.QMessageBox.critical(self, "Error", self.filelist.error)
+            QtWidgets.QMessageBox.critical(self, "Error", self.filelist.error)
 
 
     # Quit
     def quitApplication(self):
-        QtGui.QApplication.quit()
+        QtWidgets.QApplication.quit()
 
 
     # Help > about...
@@ -292,7 +292,7 @@ class Main(QtGui.QMainWindow):
         Released under the General Public License.<br />
         <br />
         <a href="https://github.com/bulkware/bwrenamer">GitHub</a>"""
-        QtGui.QMessageBox.about(self, "About", msg)
+        QtWidgets.QMessageBox.about(self, "About", msg)
 
 
     #+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
@@ -301,7 +301,7 @@ class Main(QtGui.QMainWindow):
 
     # Drag
     def dragEnterEvent(self, event):
-        if (event.type() == QtCore.QEvent.DragEnter):
+        if event.type() == QtCore.QEvent.Type.DragEnter:
             if event.mimeData().hasUrls():
                 event.accept()
             else:
@@ -309,7 +309,7 @@ class Main(QtGui.QMainWindow):
 
     # Drop
     def dropEvent(self, event):
-        if (event.type() == QtCore.QEvent.Drop):
+        if event.type() == QtCore.QEvent.Type.Drop:
             if event.mimeData().hasUrls():
 
                 # Make a list of items from drag-and-drop
@@ -386,7 +386,7 @@ class Main(QtGui.QMainWindow):
             replace = False
         ok = self.filelist.counter(pos, side, zeros, replace, preview)
         if not ok and not preview:
-            QtGui.QMessageBox.critical(self, "Error", self.filelist.error)
+            QtWidgets.QMessageBox.critical(self, "Error", self.filelist.error)
         self.refreshTable()
 
 
@@ -403,7 +403,7 @@ class Main(QtGui.QMainWindow):
             invert = False
         ok = self.filelist.crop(start, end, invert, preview)
         if not ok and not preview:
-            QtGui.QMessageBox.critical(self, "Error", self.filelist.error)
+            QtWidgets.QMessageBox.critical(self, "Error", self.filelist.error)
         self.refreshTable()
 
 
@@ -415,7 +415,7 @@ class Main(QtGui.QMainWindow):
         ext = self.ui.txtExt.text()
         ok = self.filelist.extension(ext, preview)
         if not ok and not preview:
-            QtGui.QMessageBox.critical(self, "Error", self.filelist.error)
+            QtWidgets.QMessageBox.critical(self, "Error", self.filelist.error)
         self.refreshTable()
 
 
@@ -429,7 +429,7 @@ class Main(QtGui.QMainWindow):
         side = int(self.ui.cboInsertSide.currentIndex())
         ok = self.filelist.insert(text, pos, side, preview)
         if not ok and not preview:
-            QtGui.QMessageBox.critical(self, "Error", self.filelist.error)
+            QtWidgets.QMessageBox.critical(self, "Error", self.filelist.error)
         self.refreshTable()
 
 
@@ -442,7 +442,7 @@ class Main(QtGui.QMainWindow):
         new = self.ui.txtRegExReplace.text()
         ok = self.filelist.regex(old, new, preview)
         if not ok and not preview:
-            QtGui.QMessageBox.critical(self, "Error", self.filelist.error)
+            QtWidgets.QMessageBox.critical(self, "Error", self.filelist.error)
         self.refreshTable()
 
 
@@ -455,7 +455,7 @@ class Main(QtGui.QMainWindow):
         new = self.ui.txtReplaceWith.text()
         ok = self.filelist.replace(old, new, preview)
         if not ok and not preview:
-            QtGui.QMessageBox.critical(self, "Error", self.filelist.error)
+            QtWidgets.QMessageBox.critical(self, "Error", self.filelist.error)
         self.refreshTable()
 
 
@@ -474,7 +474,7 @@ class Main(QtGui.QMainWindow):
             mode = 3
         ok = self.filelist.textcase(mode, preview)
         if not ok and not preview:
-            QtGui.QMessageBox.critical(self, "Error", self.filelist.error)
+            QtWidgets.QMessageBox.critical(self, "Error", self.filelist.error)
         self.refreshTable()
 
 
@@ -487,7 +487,7 @@ class Main(QtGui.QMainWindow):
         side = int(self.ui.cboTrimSide.currentIndex())
         ok = self.filelist.trim(length, side, preview)
         if not ok and not preview:
-            QtGui.QMessageBox.critical(self, "Error", self.filelist.error)
+            QtWidgets.QMessageBox.critical(self, "Error", self.filelist.error)
         self.refreshTable()
 
 
@@ -513,20 +513,20 @@ class Main(QtGui.QMainWindow):
 
         # Populate table
         for i, file in enumerate(self.filelist.filelist):
-            item = QtGui.QTableWidgetItem(file[2])
-            item.setTextAlignment(int(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignLeft))
+            item = QtWidgets.QTableWidgetItem(file[2])
+            item.setTextAlignment(int(QtCore.Qt.AlignmentFlag.AlignVCenter | QtCore.Qt.AlignmentFlag.AlignLeft))
             self.ui.tblFileList.setItem(i, 0, item)
 
-            item = QtGui.QTableWidgetItem(file[3])
-            item.setTextAlignment(int(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignLeft))
+            item = QtWidgets.QTableWidgetItem(file[3])
+            item.setTextAlignment(int(QtCore.Qt.AlignmentFlag.AlignVCenter | QtCore.Qt.AlignmentFlag.AlignLeft))
             self.ui.tblFileList.setItem(i, 1, item)
 
-            item = QtGui.QTableWidgetItem(file[4])
-            item.setTextAlignment(int(QtCore.Qt.AlignVCenter | QtCore.Qt.AlignLeft))
+            item = QtWidgets.QTableWidgetItem(file[4])
+            item.setTextAlignment(int(QtCore.Qt.AlignmentFlag.AlignVCenter | QtCore.Qt.AlignmentFlag.AlignLeft))
             self.ui.tblFileList.setItem(i, 2, item)
 
-            item = QtGui.QTableWidgetItem()
-            item.setFlags(QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable)
+            item = QtWidgets.QTableWidgetItem()
+            item.setFlags(QtCore.Qt.ItemFlag.ItemIsEnabled | QtCore.Qt.ItemFlag.ItemIsSelectable)
             self.ui.tblFileList.setItem(i, 3, item)
 
         # Resize columns to contents
@@ -554,8 +554,8 @@ class Main(QtGui.QMainWindow):
 
 # Creates an application object and begins the event handling loop
 if __name__ == "__main__":
-    app = QtGui.QApplication(sys.argv)
+    app = QtWidgets.QApplication(sys.argv)
     window = Main()
     window.show()
-    ret = app.exec_()
+    ret = app.exec()
     sys.exit(ret)
