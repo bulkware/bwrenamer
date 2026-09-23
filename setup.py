@@ -38,6 +38,7 @@ setup(
     description = "An application to batch rename files.",
     name = "bwRenamer",
     version = "1.1.0",
+    install_requires = ["PySide6>=6.0"],
     options = dict(build_exe = buildOptions),
     executables = [exe]
 )
