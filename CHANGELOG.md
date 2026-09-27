@@ -26,7 +26,7 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Migrated from PyQt4 into PyQt6.
 
-## [1.1.0] - 2019-04-19
+## [1.1.0] - 2014-01-01
 
 ### Added
 
@@ -38,7 +38,7 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Converted the wiki into `README.md`.
 - Moved the Quit button into the toolbar.
 
-## [1.0.0] - 2018-02-17
+## [1.0.0] - 2013-01-01
 
 ### Added
 
