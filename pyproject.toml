@@ -1,0 +1,98 @@
+# This file is the single packaging authority for Python, Windows, and native
+# package build metadata.
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bwRenamer"
+version = "1.4.0"
+description = "Desktop application for batch renaming files."
+readme = "README.md"
+requires-python = ">=3.11"
+license = "GPL-3.0-or-later"
+license-files = ["license.txt", "gpl.txt"]
+authors = [{ name = "Antti-Pekka Meronen", email = "antice@kapsi.fi" }]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "Topic :: Utilities",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = ["PySide6>=6.0"]
+
+[project.scripts]
+bwrenamer = "bwrenamer.main:main"
+
+[project.urls]
+"Bug Reports" = "https://github.com/bulkware/bwrenamer/issues"
+Source = "https://github.com/bulkware/bwrenamer"
+
+[project.optional-dependencies]
+dev = ["coverage>=7.0", "pylint>=3.0"]
+release = ["build>=1.2", "cx-Freeze>=8.6"]
+
+# bwRenamer keeps its historical flat source layout.  Mapping this checkout to
+# a package preserves it while still giving installed builds package resources.
+[tool.setuptools]
+packages = ["bwrenamer"]
+package-dir = { bwrenamer = "." }
+
+[tool.setuptools.package-data]
+bwrenamer = ["*.png", "*.ui"]
+
+[[tool.cxfreeze.executables]]
+script = "freeze_entry.py"
+base = "gui"
+target-name = "bwRenamer"
+icon = "icon.ico"
+shortcut-name = "bwRenamer"
+shortcut-dir = "bwRenamerMenu"
+copyright = "Copyright (C) 2026 Bulkware"
+
+[tool.cxfreeze.build_exe]
+build-exe = "build/windows/bwRenamer"
+include-files = [["assets", "assets"]]
+include-msvcr = true
+packages = ["shiboken6"]
+includes = ["zlib"]
+zip-exclude-packages = ["*"]
+
+[tool.cxfreeze.bdist_msi]
+dist-dir = "build/windows/installer"
+product-name = "bwRenamer"
+initial-target-dir = "[LocalAppDataFolder]Programs\\bwRenamer"
+install-icon = "icon.ico"
+launch-on-finish = true
+upgrade-code = "{C7065B9D-2D7A-4FD2-9B65-76DDDD2B279B}"
+
+[tool.cxfreeze.bdist_msi.data]
+Directory = [
+    ["ProgramMenuFolder", "TARGETDIR", "."],
+    ["bwRenamerMenu", "ProgramMenuFolder", "BWRENAM~1|bwRenamer"],
+]
+
+[tool.pylint.main]
+py-version = "3.11"
+
+[tool.pylint.format]
+max-line-length = 100
+
+[tool.pylint."messages control"]
+disable = [
+    "bare-except", "c-extension-no-member", "consider-using-f-string",
+    "consider-using-in", "duplicate-code", "invalid-name", "missing-module-docstring",
+    "missing-class-docstring", "missing-function-docstring", "multiple-statements",
+    "no-else-continue", "no-else-return", "possibly-used-before-assignment",
+    "simplifiable-if-statement", "too-many-arguments", "too-many-branches",
+    "too-many-positional-arguments", "too-many-public-methods", "too-many-return-statements",
+    "too-many-statements", "unused-argument", "unused-variable", "useless-object-inheritance",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["bwrenamer"]
+
+[tool.coverage.report]
+show_missing = true
