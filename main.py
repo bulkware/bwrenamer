@@ -1,5 +1,4 @@
 # !/usr/bin/env python3
-# -*- coding: utf-8 -*-
 
 """ An application to rename files. """
 
@@ -11,10 +10,12 @@ import sys # System-specific parameters and functions
 from PySide6 import QtCore, QtGui, QtWidgets
 
 # Application classes
-from filelisthandler import FileListHandler # A class to handle file lists
+from . import __version__
+from .filelisthandler import FileListHandler # A class to handle file lists
 
 # Import mainwindow
-from mainwindow import *
+from .mainwindow import Ui_MainWindow
+from .resources import asset_path
 
 # Create a class for our mainwindow
 class Main(QtWidgets.QMainWindow):
@@ -93,22 +94,22 @@ class Main(QtWidgets.QMainWindow):
         self.ui.btnTrim.clicked.connect(self.addTrim)
 
         # Icons
-        self.setWindowIcon(QtGui.QIcon("icon.png"))
-        self.ui.actionAddFiles.setIcon(QtGui.QIcon("add_files.png"))
-        self.ui.actionAddFolder.setIcon(QtGui.QIcon("add_folder.png"))
-        self.ui.actionRemoveFiles.setIcon(QtGui.QIcon("remove.png"))
-        self.ui.actionClearList.setIcon(QtGui.QIcon("clear.png"))
-        self.ui.actionRename.setIcon(QtGui.QIcon("rename.png"))
-        self.ui.actionQuit.setIcon(QtGui.QIcon("quit.png"))
-        self.ui.actionAbout.setIcon(QtGui.QIcon("about.png"))
-        self.ui.tabMain.setTabIcon(0, QtGui.QIcon("counter.png"))
-        self.ui.tabMain.setTabIcon(1, QtGui.QIcon("crop.png"))
-        self.ui.tabMain.setTabIcon(2, QtGui.QIcon("extension.png"))
-        self.ui.tabMain.setTabIcon(3, QtGui.QIcon("insert.png"))
-        self.ui.tabMain.setTabIcon(4, QtGui.QIcon("regex.png"))
-        self.ui.tabMain.setTabIcon(5, QtGui.QIcon("replace.png"))
-        self.ui.tabMain.setTabIcon(6, QtGui.QIcon("text_case.png"))
-        self.ui.tabMain.setTabIcon(7, QtGui.QIcon("trim.png"))
+        self.setWindowIcon(QtGui.QIcon(asset_path("icon.png")))
+        self.ui.actionAddFiles.setIcon(QtGui.QIcon(asset_path("add_files.png")))
+        self.ui.actionAddFolder.setIcon(QtGui.QIcon(asset_path("add_folder.png")))
+        self.ui.actionRemoveFiles.setIcon(QtGui.QIcon(asset_path("remove.png")))
+        self.ui.actionClearList.setIcon(QtGui.QIcon(asset_path("clear.png")))
+        self.ui.actionRename.setIcon(QtGui.QIcon(asset_path("rename.png")))
+        self.ui.actionQuit.setIcon(QtGui.QIcon(asset_path("quit.png")))
+        self.ui.actionAbout.setIcon(QtGui.QIcon(asset_path("about.png")))
+        self.ui.tabMain.setTabIcon(0, QtGui.QIcon(asset_path("counter.png")))
+        self.ui.tabMain.setTabIcon(1, QtGui.QIcon(asset_path("crop.png")))
+        self.ui.tabMain.setTabIcon(2, QtGui.QIcon(asset_path("extension.png")))
+        self.ui.tabMain.setTabIcon(3, QtGui.QIcon(asset_path("insert.png")))
+        self.ui.tabMain.setTabIcon(4, QtGui.QIcon(asset_path("regex.png")))
+        self.ui.tabMain.setTabIcon(5, QtGui.QIcon(asset_path("replace.png")))
+        self.ui.tabMain.setTabIcon(6, QtGui.QIcon(asset_path("text_case.png")))
+        self.ui.tabMain.setTabIcon(7, QtGui.QIcon(asset_path("trim.png")))
 
         # Drag-and-drop events for file list
         self.ui.tblFileList.dragEnterEvent = self.dragEnterEvent
@@ -286,12 +287,12 @@ class Main(QtWidgets.QMainWindow):
     # Help > about...
     def aboutMessage(self):
         msg = """<strong>bwRenamer</strong><br />
-        Version 1.1.0<br />
+        Version %s<br />
         <br />
         This is free software.<br />
         Released under the General Public License.<br />
         <br />
-        <a href="https://github.com/bulkware/bwrenamer">GitHub</a>"""
+        <a href="https://github.com/bulkware/bwrenamer">GitHub</a>""" % __version__
         QtWidgets.QMessageBox.about(self, "About", msg)
 
 
@@ -514,15 +515,18 @@ class Main(QtWidgets.QMainWindow):
         # Populate table
         for i, file in enumerate(self.filelist.filelist):
             item = QtWidgets.QTableWidgetItem(file[2])
-            item.setTextAlignment(int(QtCore.Qt.AlignmentFlag.AlignVCenter | QtCore.Qt.AlignmentFlag.AlignLeft))
+            item.setTextAlignment(
+                QtCore.Qt.AlignmentFlag.AlignVCenter | QtCore.Qt.AlignmentFlag.AlignLeft)
             self.ui.tblFileList.setItem(i, 0, item)
 
             item = QtWidgets.QTableWidgetItem(file[3])
-            item.setTextAlignment(int(QtCore.Qt.AlignmentFlag.AlignVCenter | QtCore.Qt.AlignmentFlag.AlignLeft))
+            item.setTextAlignment(
+                QtCore.Qt.AlignmentFlag.AlignVCenter | QtCore.Qt.AlignmentFlag.AlignLeft)
             self.ui.tblFileList.setItem(i, 1, item)
 
             item = QtWidgets.QTableWidgetItem(file[4])
-            item.setTextAlignment(int(QtCore.Qt.AlignmentFlag.AlignVCenter | QtCore.Qt.AlignmentFlag.AlignLeft))
+            item.setTextAlignment(
+                QtCore.Qt.AlignmentFlag.AlignVCenter | QtCore.Qt.AlignmentFlag.AlignLeft)
             self.ui.tblFileList.setItem(i, 2, item)
 
             item = QtWidgets.QTableWidgetItem()
@@ -552,10 +556,13 @@ class Main(QtWidgets.QMainWindow):
         self.ui.tabMain.setEnabled(True)
 
 
-# Creates an application object and begins the event handling loop
-if __name__ == "__main__":
+def main():
+    """Create the application object and begin the event loop."""
     app = QtWidgets.QApplication(sys.argv)
     window = Main()
     window.show()
-    ret = app.exec()
-    sys.exit(ret)
+    return app.exec()
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
